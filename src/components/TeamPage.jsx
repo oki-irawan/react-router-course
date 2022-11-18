@@ -66,6 +66,7 @@ export default function TeamPage() {
             </Link>
         </h4>
 
+        <h4>Championships</h4>
         <ul className='championships'>
             {team.championships.map((ship) => <li key={ship}>{ship}</li>)}
         </ul>
