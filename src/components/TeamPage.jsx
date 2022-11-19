@@ -4,7 +4,9 @@ import { Link, useParams } from 'react-router-dom'
 import useTeamsArticles from '../hooks/useTeamsArticles';
 import useTeam from '../hooks/useTeam';
 import useTeamNames from '../hooks/useTeamNames';
+
 import TeamLogo from './TeamLogo';
+import Loading from './Loading';
 
 import {slugify} from '../utils';
 
@@ -45,7 +47,7 @@ export default function TeamPage() {
     } = useTeamPageData(teamId);
 
 
-    if (loading === true) return (<p>LOADING</p>);
+    if (loading === true) return <Loading />;
 
     if (!teamNames.includes(teamId)) {
         return (

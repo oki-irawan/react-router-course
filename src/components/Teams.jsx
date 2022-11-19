@@ -3,8 +3,8 @@ import { Outlet } from 'react-router-dom'
 
 import useTeamNames from '../hooks/useTeamNames'
 
-import SideBar from './Siderbar'
-
+import SideBar from './Siderbar';
+import Loading from './Loading';
 
 export default function Teams() {
 
@@ -13,7 +13,7 @@ export default function Teams() {
     loading,
   } = useTeamNames();
 
-  if (loading === true) return null;
+  if (loading === true) return <Loading />;
 
   return (
     <div className='container two-column'>

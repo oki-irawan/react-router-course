@@ -1,8 +1,10 @@
 import React from 'react'
 import { useParams, Link } from 'react-router-dom'
 
-import useTeam from '../hooks/useTeam';
+import Loading from './Loading';
 import TeamLogo from './TeamLogo';
+
+import useTeam from '../hooks/useTeam';
 
 export default function Team() {
     const { teamId } = useParams();
@@ -12,7 +14,7 @@ export default function Team() {
         loading,
     } = useTeam(teamId);
 
-    if (loading === true) return null;
+    if (loading === true) return <Loading />;
 
     if (!team) return null;
 

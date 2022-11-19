@@ -20,11 +20,17 @@ export default function App () {
           <Route path="/" element={<Home />}/>
           <Route path="/players" element={<Players />} >
             <Route path=":playerId" element={<Player />} />
-            {/* <Route path="/" element={<h3 className="center">Select A Player</h3>} /> */}
+            <Route 
+              path="" 
+              element={<div className="sidebar-instruction">Select A Player</div>} 
+            />
           </Route>
           <Route path="/teams" element={<Teams />} >
             <Route path=":teamId" element={<Team />} />
-            {/* <Route path="*" element={<h3>Select A Team</h3>} /> */}
+            <Route 
+              path="" 
+              element={<div className="sidebar-instruction">Select A Team</div>} 
+            />
           </Route>
           <Route path="/:teamId" element={<TeamPage />} />
           <Route path="/:teamId/articles" element={<Articles />} >

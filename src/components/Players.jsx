@@ -1,6 +1,9 @@
 import React from 'react'
 import { Outlet, useLocation, useSearchParams } from 'react-router-dom'
+
 import SideBar from './Siderbar';
+import Loading from './Loading';
+
 import usePlayerNames from '../hooks/usePlayerNames';
 
 export default function Players() {
@@ -14,7 +17,7 @@ export default function Players() {
     loading,
   } = usePlayerNames(team)
 
-  if (loading === true) return null;
+  if (loading === true) return <Loading />;
 
 
   return (

@@ -2,6 +2,7 @@ import React from 'react'
 import { Outlet, useParams } from 'react-router-dom'
 
 import Sidebar from './Siderbar';
+import Loading from './Loading';
 
 import useTeamsArticles from '../hooks/useTeamsArticles'
 
@@ -13,7 +14,7 @@ export default function Articles() {
         loading,
     } = useTeamsArticles(teamId);
 
-    if (loading === true) return null;
+    if (loading === true) return <Loading />;
 
 
   return (

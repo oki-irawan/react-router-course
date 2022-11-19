@@ -1,5 +1,6 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
+import Loading from './Loading';
 
 import useArticle from '../hooks/useArticle';
 
@@ -12,7 +13,7 @@ export default function Article() {
     loading
   } = useArticle({teamId, articleId})
 
-  if (loading === true) return null;
+  if (loading === true) return <Loading />;
 
 
   return (
