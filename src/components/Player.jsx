@@ -1,5 +1,5 @@
 import React from 'react'
-import { useParams, Link } from 'react-router-dom'
+import { useParams, Link, Navigate } from 'react-router-dom'
 
 import Loading from './Loading';
 import usePlayer from '../hooks/usePlayer';
@@ -12,17 +12,19 @@ export default function Player() {
         loading,
     } = usePlayer(playerId);
 
-    if (loading === true) return <Loading />;
+    let body;
 
-    if (!player) return null;
-
-    return (
-        <div className='panel'>
+    if (loading === true ) {
+      body = <Loading />;
+    } else if (player === null) {
+      body = <Navigate to='/players' />
+    } else {
+        body = (<>
             <img className='avatar' src={player.avatar} alt={`avatar for ${player.name}`} />
             <h1 className='medium-header'>{player.name}</h1>
             <h3 className='header'>#{player.number}</h3>
             <div className='row'>
-                <ul className='info-list' style={{marginRight: 80}}>
+                <ul className='info-list' style={{ marginRight: 80 }}>
                     <li>
                         Team
                         <div>
@@ -45,7 +47,7 @@ export default function Player() {
                     </li>
                 </ul>
 
-                <ul className='info-list'> 
+                <ul className='info-list'>
                     <li>
                         APG
                         <div>
@@ -66,6 +68,12 @@ export default function Player() {
                     </li>
                 </ul>
             </div>
+        </>)
+    }
+
+    return (
+        <div className='panel'>
+            {body}
         </div>
     )
 }
